@@ -27,8 +27,8 @@ export const LayoutContainer = styled.div`
 `;
 
 export const Main = styled.main`
-  flex: 1;        /* 남은 높이 전부 차지 */
-  min-height: 0;  /* flex 자식 스크롤 깨짐 방지(중요) */
+  flex: 1; /* 남은 높이 전부 차지 */
+  min-height: 0; /* flex 자식 스크롤 깨짐 방지(중요) */
   overflow: auto; /* 여기서만 스크롤 */
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;

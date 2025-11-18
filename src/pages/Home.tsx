@@ -1,6 +1,8 @@
 // src/pages/Home.tsx
 import { useNavigate } from "react-router-dom";
 
+
+// 라우팅 테스트를 위한 코드 (임시 홈 화면)
 export default function Home() {
   const nav = useNavigate();
 
