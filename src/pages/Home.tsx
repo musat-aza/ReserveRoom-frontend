@@ -7,6 +7,12 @@ import { SmashRoomCard } from "../components/Home/SmashRoomCard";
 import { CubeRoomCard } from "../components/Home/CubeRoomCard";
 import { RecentBoardCard } from "../components/Home/BoardCard";
 
+import { MOCK_BOARD_POSTS } from "../Mocks/boardMockData";
+import { HOME_MOCK_DATA } from "../Mocks/homeMockData";
+
+import type { Post } from "../components/Home/BoardCard";
+import type { ReservationData } from "../components/Home/ReservationItem";
+
 type CardId = "MY" | "SMASH" | "CUBE";
 
 const CARD_TITLE = {
@@ -35,6 +41,22 @@ export default function Home() {
   const nav = useNavigate();
   const [order, setOrder] = useState<CardId[]>(["CUBE", "MY", "SMASH"]);
 
+  const { reservations } = HOME_MOCK_DATA as {
+    reservations: ReservationData[];
+  };
+
+  const getLatestPost = (): Post | null => {
+    if (!MOCK_BOARD_POSTS || MOCK_BOARD_POSTS.length === 0) return null;
+
+    // 날짜를 기준으로 내림차순 정렬하여 가장 첫 번째(최신) 글을 반환
+    return [...MOCK_BOARD_POSTS].sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )[0];
+  };
+
+  const latestPostData = getLatestPost();
+
   const handleClickCard = (id: CardId) => {
     if (order[order.length - 1] === id) return;
     setOrder((prev) => [...prev.filter((c) => c !== id), id]);
@@ -57,7 +79,7 @@ export default function Home() {
   const renderCardContent = (id: CardId) => {
     switch (id) {
       case "MY":
-        return <MyReservationCard />;
+        return <MyReservationCard reservations={reservations} />;
       case "SMASH":
         return <SmashRoomCard />;
       case "CUBE":
@@ -69,7 +91,7 @@ export default function Home() {
 
   return (
     <Page>
-      <RecentBoardCard />
+      <RecentBoardCard latestPost={latestPostData} />
       <CardStack>
         {order.map((id, index) => (
           <LayerCard

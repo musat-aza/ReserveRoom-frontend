@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-// 1. 아까 만든 아이템 컴포넌트와 데이터 가져오기
 import { ReservationItem } from "./ReservationItem";
-import { HOME_MOCK_DATA } from "../../Mocks/homeMockData";
+import type { ReservationData } from "./ReservationItem";
 
 const List = styled.div`
   display: flex;
@@ -15,9 +14,11 @@ const List = styled.div`
   }
 `;
 
-export function MyReservationCard() {
-  const { reservations } = HOME_MOCK_DATA;
-
+export function MyReservationCard({
+  reservations,
+}: {
+  reservations: ReservationData[];
+}) {
   return (
     <List>
       {reservations.map((reservation) => (

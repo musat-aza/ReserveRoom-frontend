@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import type { ReactNode } from "react";
 
+type IconType = "chevron" | "plus";
+
 type LayerCardProps = {
   depth: number;
   title: string;
   onClick?: () => void;
   children?: ReactNode;
   onMoreClick?: () => void;
+  iconType?: IconType;
 };
 
 const CARD_HEIGHT = 493;
@@ -103,14 +106,32 @@ const ChevronRightIcon = () => (
   </svg>
 );
 
+const PlusIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  </svg>
+);
+
 export function LayerCard({
   depth,
   title,
   onClick,
   children,
   onMoreClick,
+  iconType = "chevron",
 }: LayerCardProps) {
   const isFront = depth === 2;
+  const IconComp = iconType === "plus" ? PlusIcon : ChevronRightIcon;
 
   const handleMoreClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -123,7 +144,7 @@ export function LayerCard({
         <Title>{title}</Title>
         {onMoreClick && (
           <IconButton depth={depth} onClick={handleMoreClick}>
-            <ChevronRightIcon />
+            <IconComp />
           </IconButton>
         )}
       </Header>

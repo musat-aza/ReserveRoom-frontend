@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import BoardIcon from "../../assets/board.svg";
 
-import { MOCK_BOARD_POSTS } from "../../Mocks/boardMockData";
-
 export interface Post {
   postId: number;
   username: string;
@@ -103,17 +101,14 @@ const ArrowIcon = styled.span`
   font-size: 18px;
 `;
 
-export function RecentBoardCard() {
+interface RecentBoardCardProps {
+  latestPost: Post | null;
+}
+
+export function RecentBoardCard({ latestPost }: RecentBoardCardProps) {
   const nav = useNavigate();
 
-  const latestPost =
-    MOCK_BOARD_POSTS.length > 0
-      ? [...MOCK_BOARD_POSTS].sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        )[0]
-      : null;
-
+  // ✅ 데이터 로직 제거, props만 사용
   if (!latestPost) return null;
 
   return (
