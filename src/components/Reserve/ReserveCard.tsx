@@ -29,7 +29,7 @@ export const ReserveCard = ({
   return (
     // 2. 전체 컨테이너에 클릭 이벤트 부여 (cursor: pointer 추가)
     <S.Container >   
-      {/* --- 여기부터 클릭 시 이동되는 영역 --- */}
+
       <S.InfoRow>
         <S.Label>유형</S.Label>
         <S.Value>{roomName}</S.Value>
@@ -52,9 +52,7 @@ export const ReserveCard = ({
           <S.Value>{attendeeNames}</S.Value>
         </S.InfoRow>
       )}
-      {/* --- 여기까지 클릭 시 이동되는 영역 --- */}
 
-      {/* 3. ButtonArea 클릭 시 이벤트 전파 막기 (여기 누르면 이동 안 함) */}
       <S.ButtonArea >
         <S.EditButton onClick={onEdit}>예약변경</S.EditButton>
         <S.CancelButton onClick={onCancel}>예약취소</S.CancelButton>
