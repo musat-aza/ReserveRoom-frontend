@@ -1,10 +1,7 @@
 // src/components/Home/SmashRoomCard.tsx
 import styled from "styled-components";
 import { SmashRoomMap } from "@/components/smashroom/SmashRoomMap";
-import type {
-  SmashRoomState,
-  SmashRoomStatus,
-} from "@/components/smashroom/SmashRoomMap";
+import type { SmashRoomState } from "@/components/smashroom/SmashRoomMap";
 
 interface SmashRoomCardProps {
   rooms: SmashRoomState[]; // 14개 방 상태

@@ -13,7 +13,7 @@ type LayerCardProps = {
 };
 
 const CARD_HEIGHT = 493;
-const VISIBLE_HEADER_HEIGHT = 50;
+const VISIBLE_HEADER_HEIGHT = 60;
 
 const Card = styled.section<{ depth: number }>`
   box-sizing: border-box;
@@ -35,9 +35,10 @@ const Card = styled.section<{ depth: number }>`
   border: 1px solid rgba(255, 255, 255, 0.2);
 
   background-color: ${({ depth }) =>
-    depth === 0 ? "#F2F4F6" : depth === 1 ? "#D1D6DB" : "#8B95A1"};
+    depth === 0 ? "#8B95A1" : depth === 1 ? "#D1D6DB" : "#F2F4F6"};
 
-  color: ${({ depth }) => (depth === 2 ? "#fff" : "#333")};
+  color: ${({ depth }) => (depth === 0 ? "#fff" : "#333")};
+
   z-index: ${({ depth }) => depth};
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -70,7 +71,7 @@ const IconButton = styled.button<{ depth: number }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #333;
 
   opacity: ${({ depth }) => (depth === 2 ? 1 : 0)};
   pointer-events: ${({ depth }) => (depth === 2 ? "auto" : "none")};

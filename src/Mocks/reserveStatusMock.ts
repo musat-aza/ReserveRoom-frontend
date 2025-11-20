@@ -7,7 +7,7 @@ export const MOCK_SMASH_ROOMS = [
     roomName: "큐브 1번방",
     bookerName: "김무사트",
     startTime: "2025-11-20T09:00:00",
-    endTime: "2025-11-20T15:00:00",
+    endTime: "2025-11-20T23:00:00",
     purpose: "STUDY",
     attendeeNames: ["김무사트"],
   },

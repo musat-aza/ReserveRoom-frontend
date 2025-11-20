@@ -29,12 +29,12 @@ export type RouteDef = {
 
 export const routes: RouteDef[] = [
   {
-    path: "/",
+    path: "/home",
     element: <Home />,
     meta: { title: "홈", showBack: false, showMy: true, visible: true },
   },
   {
-    path: "/login",
+    path: "/",
     element: <Login />,
     meta: { visible: false },
   },

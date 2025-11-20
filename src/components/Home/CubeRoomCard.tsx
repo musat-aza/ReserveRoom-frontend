@@ -1,16 +1,20 @@
-// components/home/cards/CubeRoomCard.tsx
+// src/components/Home/CubeRoomCard.tsx
 import styled from "styled-components";
+import { CubeRoomMap } from "@/components/cube/CubeRoomMap";
+import type { CubeRoomState } from "@/components/cube/CubeRoomMap";
 
-const MapImage = styled.img`
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 4px;
-`;
+interface CubeRoomCardProps {
+  rooms: CubeRoomState[]; // 8개 방 상태
+}
 
-export function CubeRoomCard() {
+export function CubeRoomCard({ rooms }: CubeRoomCardProps) {
   return (
-    <div>
-      <MapImage src="/images/cube-map.png" alt="큐브 배치도" />
-    </div>
+    <CardWrapper>
+      <CubeRoomMap rooms={rooms} />
+    </CardWrapper>
   );
 }
+
+const CardWrapper = styled.div`
+  width: 100%;
+`;
