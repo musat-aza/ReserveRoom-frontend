@@ -32,5 +32,5 @@ export const Main = styled.main`
   overflow: auto; /* 여기서만 스크롤 */
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  padding: 16px 16px 24px; /* 기본 패딩 (페이지에서 조절 가능) */
+  padding: 16px; /* 기본 패딩 (페이지에서 조절 가능) */
 `;
