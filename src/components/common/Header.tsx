@@ -47,7 +47,8 @@ export default function Header() {
   if (meta.visible === false) return null;
 
   const handleBack = () => {
-    const idx = (window.history.state && (window.history.state as any).idx) ?? 0;
+    const idx =
+      (window.history.state && (window.history.state as any).idx) ?? 0;
     if (idx > 0) nav(-1);
     else nav("/");
   };

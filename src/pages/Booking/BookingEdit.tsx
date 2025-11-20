@@ -5,7 +5,6 @@ import * as S from "./BookingEdit.styles";
 import { DUMMY_DATA } from "../../components/Reserve/reserveDummy";
 import { TIME_OPTIONS } from "../../components/Reserve/reserveDummy";
 
-
 export const BookingEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -120,9 +119,14 @@ export const BookingEdit = () => {
         {/* 시작 시간 */}
         <S.InputWrapper>
           <S.FloatingLabel>예약 시작시간 *</S.FloatingLabel>
-          <S.StyledSelect value={startTime} onChange={(e) => setStartTime(e.target.value)}>
+          <S.StyledSelect
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+          >
             {timeOptions.map((t) => (
-              <option key={t} value={t}>{t}</option>
+              <option key={t} value={t}>
+                {t}
+              </option>
             ))}
           </S.StyledSelect>
         </S.InputWrapper>
@@ -130,9 +134,14 @@ export const BookingEdit = () => {
         {/* 종료 시간 */}
         <S.InputWrapper>
           <S.FloatingLabel>예약 종료시간 *</S.FloatingLabel>
-          <S.StyledSelect value={endTime} onChange={(e) => setEndTime(e.target.value)}>
+          <S.StyledSelect
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+          >
             {timeOptions.map((t) => (
-              <option key={t} value={t}>{t}</option>
+              <option key={t} value={t}>
+                {t}
+              </option>
             ))}
           </S.StyledSelect>
         </S.InputWrapper>
@@ -140,7 +149,10 @@ export const BookingEdit = () => {
         {/* 용도 */}
         <S.InputWrapper>
           <S.FloatingLabel>용도 *</S.FloatingLabel>
-          <S.StyledSelect value={purpose} onChange={(e) => setPurpose(e.target.value)}>
+          <S.StyledSelect
+            value={purpose}
+            onChange={(e) => setPurpose(e.target.value)}
+          >
             <option value="회의">회의</option>
             <option value="학습">학습</option>
             <option value="동아리활동">동아리활동</option>
@@ -156,7 +168,9 @@ export const BookingEdit = () => {
             {attendees.map((p, idx) => (
               <S.Chip key={idx}>
                 {p}
-                <S.ChipDelete onClick={() => removeAttendee(idx)}>x</S.ChipDelete>
+                <S.ChipDelete onClick={() => removeAttendee(idx)}>
+                  x
+                </S.ChipDelete>
               </S.Chip>
             ))}
 
@@ -174,7 +188,9 @@ export const BookingEdit = () => {
 
         {/* 버튼 */}
         <S.ButtonGroup>
-          <S.CancelButton type="button" onClick={() => navigate(-1)}>취소</S.CancelButton>
+          <S.CancelButton type="button" onClick={() => navigate(-1)}>
+            취소
+          </S.CancelButton>
           <S.SubmitButton type="submit">변경 저장</S.SubmitButton>
         </S.ButtonGroup>
       </S.Form>

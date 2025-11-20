@@ -45,7 +45,9 @@ export default function MyBooking() {
     if (selectedId === null) return;
 
     console.log(`예약 ID ${selectedId} 삭제 요청`);
-    setReservations((prev) => prev.filter((r) => r.reservationId !== selectedId));
+    setReservations((prev) =>
+      prev.filter((r) => r.reservationId !== selectedId)
+    );
 
     setIsModalOpen(false);
     setSelectedId(null);
@@ -62,16 +64,27 @@ export default function MyBooking() {
   };
 
   const total = reservations.length;
-  const smash = reservations.filter((r) => r.roomName.includes("스매시")).length;
+  const smash = reservations.filter((r) =>
+    r.roomName.includes("스매시")
+  ).length;
   const cube = reservations.filter((r) => r.roomName.includes("큐브")).length;
 
   return (
     <div style={{ padding: "20px" }}>
       <ReserveCount total={total} smash={smash} cube={cube} />
 
-      <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+        }}
+      >
         {reservations.length === 0 ? (
-          <div style={{ color: "#999", marginTop: "20px" }}>예약 내역이 없습니다.</div>
+          <div style={{ color: "#999", marginTop: "20px" }}>
+            예약 내역이 없습니다.
+          </div>
         ) : (
           reservations.map((res) => (
             <ReserveCard

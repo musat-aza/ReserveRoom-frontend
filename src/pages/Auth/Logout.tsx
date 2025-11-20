@@ -1,5 +1,5 @@
-import * as S from "./Logout.styles"
-import Background from "@/assets/back_ground.svg";  // 큰 사자 배경 (첫 번째 이미지)
+import * as S from "./Logout.styles";
+import Background from "@/assets/back_ground.svg"; // 큰 사자 배경 (첫 번째 이미지)
 
 export default function Logout() {
   return (
