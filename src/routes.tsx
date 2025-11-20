@@ -76,12 +76,22 @@ export const routes: RouteDef[] = [
   {
     path: "/smashroom/status",
     element: <SmashStatus />,
-    meta: { title: "스매시룸 현황", showBack: true, showMy: true, visible: true },
+    meta: {
+      title: "스매시룸 현황",
+      showBack: true,
+      showMy: true,
+      visible: true,
+    },
   },
   {
     path: "/smashroom/reserve",
     element: <SmashReserve />,
-    meta: { title: "스매시룸 예약", showBack: true, showMy: true, visible: true },
+    meta: {
+      title: "스매시룸 예약",
+      showBack: true,
+      showMy: true,
+      visible: true,
+    },
   },
   {
     path: "/cube/status",

@@ -6,9 +6,12 @@ import { MyReservationCard } from "../components/Home/MyReservationCard";
 import { SmashRoomCard } from "../components/Home/SmashRoomCard";
 import { CubeRoomCard } from "../components/Home/CubeRoomCard";
 import { RecentBoardCard } from "../components/Home/BoardCard";
+import type { SmashRoomState } from "@/components/smashroom/SmashRoomMap";
 
 import { MOCK_BOARD_POSTS } from "../Mocks/boardMockData";
 import { HOME_MOCK_DATA } from "../Mocks/homeMockData";
+
+import { getSmashRoomStates } from "@/utils/getSmashRoomStates";
 
 import type { Post } from "../components/Home/BoardCard";
 import type { ReservationData } from "../components/Home/ReservationItem";
@@ -44,6 +47,7 @@ export default function Home() {
   const { reservations } = HOME_MOCK_DATA as {
     reservations: ReservationData[];
   };
+  const smashRooms = getSmashRoomStates();
 
   const getLatestPost = (): Post | null => {
     if (!MOCK_BOARD_POSTS || MOCK_BOARD_POSTS.length === 0) return null;
@@ -81,7 +85,7 @@ export default function Home() {
       case "MY":
         return <MyReservationCard reservations={reservations} />;
       case "SMASH":
-        return <SmashRoomCard />;
+        return <SmashRoomCard rooms={smashRooms} />;
       case "CUBE":
         return <CubeRoomCard />;
       default:

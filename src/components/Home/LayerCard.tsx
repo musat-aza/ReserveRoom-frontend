@@ -83,9 +83,9 @@ const IconButton = styled.button<{ depth: number }>`
   }
 `;
 
-const ContentArea = styled.div<{ show: boolean }>`
-  opacity: ${({ show }) => (show ? 1 : 0)};
-  pointer-events: ${({ show }) => (show ? "auto" : "none")};
+const ContentArea = styled.div<{ $show: boolean }>`
+  opacity: ${({ $show }) => ($show ? 1 : 0)};
+  pointer-events: ${({ $show }) => ($show ? "auto" : "none")};
   transition: opacity 0.2s ease;
   flex: 1;
   min-height: 0;
@@ -149,7 +149,7 @@ export function LayerCard({
         )}
       </Header>
 
-      <ContentArea show={isFront}>{children}</ContentArea>
+      <ContentArea $show={isFront}>{children}</ContentArea>
     </Card>
   );
 }

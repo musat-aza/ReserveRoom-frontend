@@ -1,16 +1,23 @@
-// components/home/cards/SmashRoomCard.tsx
+// src/components/Home/SmashRoomCard.tsx
 import styled from "styled-components";
+import { SmashRoomMap } from "@/components/smashroom/SmashRoomMap";
+import type {
+  SmashRoomState,
+  SmashRoomStatus,
+} from "@/components/smashroom/SmashRoomMap";
 
-const MapImage = styled.img`
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 4px;
-`;
+interface SmashRoomCardProps {
+  rooms: SmashRoomState[]; // 14개 방 상태
+}
 
-export function SmashRoomCard() {
+export function SmashRoomCard({ rooms }: SmashRoomCardProps) {
   return (
-    <div>
-      <MapImage src="/images/smash-map.png" alt="스매시룸 배치도" />
-    </div>
+    <CardWrapper>
+      <SmashRoomMap rooms={rooms} />
+    </CardWrapper>
   );
 }
+
+const CardWrapper = styled.div`
+  width: 100%;
+`;

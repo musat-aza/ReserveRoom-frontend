@@ -1,3 +1,65 @@
-export default function CubeStauts() {
-  return <div>큐브 현황 페이지입니다</div>;
+// src/pages/smashroom/SmashStatus.tsx
+
+import { useState } from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { DateFilter } from "@/components/Status/DateFilter";
+import { StatusLegend } from "@/components/Status/StatusLegend";
+import { RoomList } from "@/components/Status/RoomList";
+import { MOCK_SMASH_ROOMS } from "@/Mocks/reserveStatusMock"; // 폴더 이름이 실제로 Mocks인지 확인!
+
+export default function CubeStatus() {
+  const navigate = useNavigate();
+  const [selectedDate, setSelectedDate] = useState("2025-11-20");
+
+  const handleChangeDate = (value: string) => {
+    setSelectedDate(value);
+  };
+
+  // ✅ 오늘 날짜 기준 예약 필터링
+  const todaysReservations = MOCK_SMASH_ROOMS.filter((r) =>
+    r.startTime.startsWith(selectedDate)
+  );
+
+  // ✅ 스매시룸 14개 전체 목록 (실제 백엔드 roomName에 맞게 수정하면 됨)
+  const SMASH_ROOM_NAMES = [
+    "큐브 1번방",
+    "큐브 2번방",
+    "큐브 3번방",
+    "큐브 4번방",
+    "큐브 5번방",
+    "큐브 6번방",
+    "큐브 7번방",
+    "큐브 8번방",
+  ];
+
+  const handleReserve = (roomName: string) => {
+    // roomName / date를 쿼리로 넘기고 싶으면 여기서 처리하면 됨
+    navigate("/smashroom/reserve");
+  };
+
+  return (
+    <Page>
+      <Content>
+        <DateFilter value={selectedDate} onChange={handleChangeDate} />
+        <StatusLegend />
+        <RoomList
+          reservations={todaysReservations}
+          roomNames={SMASH_ROOM_NAMES}
+          onReserve={handleReserve}
+        />
+      </Content>
+    </Page>
+  );
 }
+
+/* ---------- styled ---------- */
+
+const Page = styled.div`
+  min-height: 100vh;
+  background-color: #ffffff;
+`;
+
+const Content = styled.main`
+  padding: 0 16px 24px;
+`;
